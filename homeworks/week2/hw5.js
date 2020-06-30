@@ -1,9 +1,9 @@
 function join(arr, concatStr) {
   let str = ''
-  for (var i = 0; i < arr.length; i++) {
+  for (var i = 0; i < arr.length - 1; i++) {
     str = str + arr[i] + concatStr
   }
-  return str
+  return str + arr[arr.length-1]
 }
 
 function repeat(str, times) {
@@ -16,3 +16,6 @@ function repeat(str, times) {
 
 console.log(join(['a'], '!'));
 console.log(repeat('a', 5));
+console.log(join(["a", "b", "c"], "!"))
+console.log(join(["a", 1, "b", 2, "c", 3], ','))
+
