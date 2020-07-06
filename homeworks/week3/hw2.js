@@ -1,7 +1,8 @@
 function digitsCount(num) {
   let result = 0;
-  while (num !== 0) {
-    Math.floor(num / 10);
+  let num1 = num;
+  while (num1 !== 0) {
+    num1 = Math.floor(num1 / 10);
     result += 1;
   }
   return result;
