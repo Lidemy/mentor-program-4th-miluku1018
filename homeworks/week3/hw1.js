@@ -1,10 +1,18 @@
+function isPrime(num) {
+  if (num === 1) return false;
+  if (num === 2) return true;
+  for (let i = 2; i < num; i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
 function solve(lines) {
-  const n = Number(lines[0]);
-  let result = '';
-  for (let i = 1; i <= n; i += 1) {
-    result += '*';
-    console.log(result);
+  for (let i = 1; i < lines.length; i += 1) {
+    console.log(isPrime(Number(lines[i])) ? 'Prime' : 'Composite');
   }
 }
 
-solve(['5']);
+solve(['10', '5']);
