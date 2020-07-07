@@ -1,9 +1,9 @@
 function solve(lines) {
-  const num = lines.join('').split('').reverse();
-  if (num.join('') === lines.join('')) {
+  const str = lines[0];
+  if (str === str.split('').reverse().join('')) {
     console.log('True');
   }
   console.log('False');
 }
 
-solve(['abc']);
+solve(['ac']);
