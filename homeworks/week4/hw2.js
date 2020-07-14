@@ -67,12 +67,12 @@ function updateBook(id, name) {
         name,
       },
     },
-    (error, response, body) => {
+    (error) => {
       if (error) {
         console.log('更新失敗', error);
         return;
       }
-      console.log(body);
+      console.log('更新成功');
     },
   );
 }
