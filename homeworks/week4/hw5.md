@@ -1,5 +1,5 @@
 ## 請以自己的話解釋 API 是什麼
-API 是一個可供我跟別人交換資料的介面，例如：我擁有一個知名保養品牌-小花，販售化妝水.精華液.乳液，然後，我跟 MOMO 網路平台簽訂合約，要在 MOMO 銷售我的產品，當客人購買小花化妝水-10瓶，MOMO 平台會將訂單轉給我，並由我負責出貨。因此，MOMO 必須提供一個介面讓我能夠取得訂單資料，安排出貨，同時，我也必須提供一個介面，可以讓 MOMO 網路平台取得我的庫存資料，萬一缺貨時，就可以顯示目前缺貨，告知消費者，目前缺貨，無法下單。
+API 是一個可供我跟別人交換資料的介面，例如：我擁有一個知名保養品牌-小花，販售化妝水.精華液.乳液，然後，我跟 MOMO 網路平台簽訂合約，要在 MOMO 銷售我的產品，當客人購買小花化妝水-10瓶，MOMO 平台會將訂單轉給我，並由我負責出貨。因此，MOMO 必須提供一個 API 介面讓我能夠取得訂單資料，安排出貨，同時，我也必須提供一個 API 介面，可以讓 MOMO 網路平台取得我的庫存資料，萬一缺貨時，就可以顯示目前缺貨，告知消費者，目前缺貨，無法下單。
 
 ## 請找出三個課程沒教的 HTTP status code 並簡單介紹
 * 307 (Temporary Redirect) - 暫時重新導向
@@ -21,12 +21,18 @@ Server 在預計的等待時間內，並未收到完整的請求訊息。根據H
 * 獲取單一餐廳	
   GET	/restaurants/:id
 * 新增餐廳	   
-  POST	/restaurants	     
+  POST /restaurants	     
   參數：
     name: string(餐廳名稱)
+  成功: HTTP status 200
+  失敗: HTTP status 400
 * 刪除餐廳	   
-  DELETE	/restaurants/:id	
+  DELETE /restaurants/:id	
+  成功: HTTP status 200
+  失敗: HTTP status 400
 * 更改餐廳資訊	
   PATCH	/restaurants/:id
   參數：
     name: string(餐廳名稱)
+  成功: HTTP status 200
+  失敗: HTTP status 400
