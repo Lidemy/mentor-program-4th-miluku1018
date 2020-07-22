@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker News</title>
+  <style>
+    .section-nav {
+      margin: 10px 100px;
+      width: 1200px;
+      font-size: 14px;
+    }
+    table {
+      background-color: rgb(246, 246, 239);
+      width: 100%;
+      height: 100%;
+      padding-top: 10px;
+    }
+    .navbar {
+      background-color: #ff6600;
+      height: 24px; 
+      display: flex;
+      justify-content: space-between;
+    }
+    .navbar_link {
+      display: flex;
+    }
+    .site-name {
+      display: flex;
+    }
+    .site-name img {
+      height: 18px;
+      width: 18px;
+      border: 1px solid #ffffff;
+      margin: 2px 0 0 5px;
+    }
+    .brand-name {
+      height: 24px;
+      line-height: 25px;
+      margin-left: 5px;
+    }
+    h1 {
+      margin: 0 10px 0;
+      font-size: 14px;
+    }
+    .navbar_login {
+      line-height: 24px;
+    }
+    .navbar_link a,
+    .navbar_login a {
+      text-decoration: none;
+      color: #000;
+      padding-right: 10px;
+      cursor: pointer;
+    }
+    .navbar_link a + a::before {
+      content: "|";
+      padding-right: 10px;
+    }
+    .navbar-desc {
+      display: flex;
+      line-height: 24px;
+    }
+    .navbar_login {
+      float: right;
+    }
+    tbody {
+      height: 1400px;
+    }
+    .number {
+      width: 5px;
+      padding-left: 10px;
+      color: #828282;
+      font-weight: bold;
+    }
+    .vote {
+      width: 12px;
+      height: 12px;
+    }
+    .vote img{
+      height: 12px;
+      width: 12px;
+      margin-top: 5px;
+    }
+    .main {
+      color: black;
+      text-decoration: none;
+    }
+    .side {
+      color: #828282;
+      text-decoration: none;
+    }
+    .details {
+      color: #828282;
+      display: flex;
+    }
+    .details a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #828282;
+    }
+    
+    .hide::before,
+    .hide::after {
+      content: ' | ';
+      color: #828282;
+    }
+    .details .more-info {
+      color: black;
+      margin: 10px 0;
+    }
+    footer {
+      border-top: 2px solid #ff6600;
+      background-color: rgb(246, 246, 239);
+      text-align: center;
+      padding: 15px 0;
+    }
+    .further-info a {
+      text-decoration: none;
+      color: black;
+    }
+    .further-info a + a::before {
+      content: ' | ';
+      color: #828282;
+    }
+    .search {
+      color: #828282;
+      margin-top: 18px;
+    }
+    .search input {
+      border: 1px solid #828282;
+      height: 24px;
+      border-radius: 3px;
+    }
+    @media (max-width: 768px) {
+      .section-nav {
+        width: 390px;
+        margin: 0;
+      }
+      .navbar {
+        height: 70px;
+      }
+      .site-name img {
+        margin: 20px 5px 0 3px;
+      }
+      .navbar-desc {
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        display: inline-block;
+        height: 16px;
+        font-size: 16px;
+      
+      }
+      .links {
+        margin: 0 0 0 5px;
+        width: 300px;
+      }
+      .links a {
+        font-size: 12px;
+        padding: 0;
+      }
+      .navbar_link a + a::before {
+        content: "|";
+      }
+      .navbar_login {
+        margin-top: 22px;
+      }
+      .number {
+        padding-left: 0px;
+      }
+      .details {
+        height: 30px;
+        font-size: 7pt;
+      }
+      
+      .details a {
+        margin: 0 1px;
+      }
+      .hide::before,
+      .hide::after {
+        content: '|';
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-nav">
+    <nav class="navbar">
+      <div class="navbar_header">
+        <div class="navbar_link">
+          <div class="site-name">
+            <img src="./y18.png" alt="logo">
+          </div>
+          <div class="navbar-desc">
+            <h1 class="brand-name">Hacker News</h1>
+            <div class="links">
+              <a href="#">new</a>
+              <a href="#">past</a>
+              <a href="#">comments</a>
+              <a href="#">ask</a>
+              <a href="#">show</a>
+              <a href="#">jobs</a>
+              <a href="#">submit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar_login">
+        <a href="#">login</a>
+      </div>
+    </nav>
+    <table>
+      <tbody>
+        <tr>
+          <td class="number"><span class="rank">1.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas</a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>239 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">3 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">170 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">2.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Experimental Blood Test Detects Cancer Up to Four Years Before Symptoms Appear</a>
+            <a href="#" class="side">(scientificamerican.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>32 points by </span>
+            <a href="#">prawn</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">3 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">3.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Bangladesh's economy relies heavily on Facebook </a>
+            <a href="#" class="side">(restofworld.org)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>29 points by </span>
+            <a href="#">gre007</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">11 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">4.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Terry Tao on some desirable properties of mathematical notation </a>
+            <a href="#" class="side">(mathoverflow.net)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>293 points by </span>
+            <a href="#">jjhawk</a>
+            <a href="#">11 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">138 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">5.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas </a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>285 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">5 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">205 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">6.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas</a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>239 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">3 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">170 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">7.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Experimental Blood Test Detects Cancer Up to Four Years Before Symptoms Appear</a>
+            <a href="#" class="side">(scientificamerican.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>32 points by </span>
+            <a href="#">prawn</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">3 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">8.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Bangladesh's economy relies heavily on Facebook </a>
+            <a href="#" class="side">(restofworld.org)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>29 points by </span>
+            <a href="#">gre007</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">11 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">9.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Terry Tao on some desirable properties of mathematical notation </a>
+            <a href="#" class="side">(mathoverflow.net)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>293 points by </span>
+            <a href="#">jjhawk</a>
+            <a href="#">11 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">138 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">10.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas </a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>285 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">5 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">205 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">11.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas</a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>239 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">3 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">170 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">12.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Experimental Blood Test Detects Cancer Up to Four Years Before Symptoms Appear</a>
+            <a href="#" class="side">(scientificamerican.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>32 points by </span>
+            <a href="#">prawn</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">3 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">13.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Bangladesh's economy relies heavily on Facebook </a>
+            <a href="#" class="side">(restofworld.org)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>29 points by </span>
+            <a href="#">gre007</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">11 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">14.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Terry Tao on some desirable properties of mathematical notation </a>
+            <a href="#" class="side">(mathoverflow.net)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>293 points by </span>
+            <a href="#">jjhawk</a>
+            <a href="#">11 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">138 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">15.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas </a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>285 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">5 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">205 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">16.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas</a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>239 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">3 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">170 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">17.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Experimental Blood Test Detects Cancer Up to Four Years Before Symptoms Appear</a>
+            <a href="#" class="side">(scientificamerican.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>32 points by </span>
+            <a href="#">prawn</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">3 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">18.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Bangladesh's economy relies heavily on Facebook </a>
+            <a href="#" class="side">(restofworld.org)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>29 points by </span>
+            <a href="#">gre007</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">11 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">19.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Terry Tao on some desirable properties of mathematical notation </a>
+            <a href="#" class="side">(mathoverflow.net)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>293 points by </span>
+            <a href="#">jjhawk</a>
+            <a href="#">11 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">138 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">20.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas </a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>285 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">5 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">205 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">21.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas</a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>239 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">3 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">170 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">22.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Experimental Blood Test Detects Cancer Up to Four Years Before Symptoms Appear</a>
+            <a href="#" class="side">(scientificamerican.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>32 points by </span>
+            <a href="#">prawn</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">3 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">23.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Bangladesh's economy relies heavily on Facebook </a>
+            <a href="#" class="side">(restofworld.org)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>29 points by </span>
+            <a href="#">gre007</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">11 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">24.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Terry Tao on some desirable properties of mathematical notation </a>
+            <a href="#" class="side">(mathoverflow.net)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>293 points by </span>
+            <a href="#">jjhawk</a>
+            <a href="#">11 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">138 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">25.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas </a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>285 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">5 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">205 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">26.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas</a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>239 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">3 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">170 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">27.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Experimental Blood Test Detects Cancer Up to Four Years Before Symptoms Appear</a>
+            <a href="#" class="side">(scientificamerican.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>32 points by </span>
+            <a href="#">prawn</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">3 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">28.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Bangladesh's economy relies heavily on Facebook </a>
+            <a href="#" class="side">(restofworld.org)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>29 points by </span>
+            <a href="#">gre007</a>
+            <a href="#">1 hour ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">11 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">29.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Terry Tao on some desirable properties of mathematical notation </a>
+            <a href="#" class="side">(mathoverflow.net)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>293 points by </span>
+            <a href="#">jjhawk</a>
+            <a href="#">11 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">138 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="number"><span class="rank">30.</span></td>
+          <td class="vote"><img src="./triangle.png" alt="三角形"></td>
+          <td class="title">
+            <a href="#" class="main">Medium is not the home for your ideas </a>
+            <a href="#" class="side">(hulry.com)</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <span>285 points by </span>
+            <a href="#">rahulchowdhury</a>
+            <a href="#">5 hours ago</a>
+            <a href="#" class="hide">hide</a>
+            <a href="#">205 comments</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="details">
+            <a href="#" class="more-info">More</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <footer>
+      <div class="further-info">
+        <a href="#">Guidelines</a>
+        <a href="#">FAQ</a>
+        <a href="#">Support</a>
+        <a href="#">API</a>
+        <a href="#">Security</a>
+        <a href="#">Lists</a>
+        <a href="#">Bookmarklet</a>
+        <a href="#">Legal</a>
+        <a href="#">Apply to YC</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="search">
+        Search: <input type="search">
+      </div>
+    </footer>
+  </section>
+</body>
+</html>
