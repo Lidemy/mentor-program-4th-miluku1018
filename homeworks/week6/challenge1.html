@@ -24,7 +24,6 @@
     }
     .navbar_link {
       display: flex;
-      align-items: flex-end;
     }
     .site-name {
       display: flex;
@@ -59,6 +58,7 @@
       padding-right: 10px;
     }
     .navbar-desc {
+      display: flex;
       line-height: 24px;
     }
     .navbar_login {
@@ -132,6 +132,57 @@
       height: 24px;
       border-radius: 3px;
     }
+    @media (max-width: 768px) {
+      .section-nav {
+        width: 390px;
+        margin: 0;
+      }
+      .navbar {
+        height: 70px;
+      }
+      .site-name img {
+        margin: 20px 5px 0 3px;
+      }
+      .navbar-desc {
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        display: inline-block;
+        height: 16px;
+        font-size: 16px;
+      
+      }
+      .links {
+        margin: 0 0 0 5px;
+        width: 300px;
+      }
+      .links a {
+        font-size: 12px;
+        padding: 0;
+      }
+      .navbar_link a + a::before {
+        content: "|";
+      }
+      .navbar_login {
+        margin-top: 22px;
+      }
+      .number {
+        padding-left: 0px;
+      }
+      .details {
+        height: 30px;
+        font-size: 7pt;
+      }
+      
+      .details a {
+        margin: 0 1px;
+      }
+      .hide::before,
+      .hide::after {
+        content: '|';
+      }
+    }
   </style>
 </head>
 <body>
@@ -141,16 +192,18 @@
         <div class="navbar_link">
           <div class="site-name">
             <img src="./y18.png" alt="logo">
-            <h1 class="brand-name">Hacker News</h1>
           </div>
           <div class="navbar-desc">
-            <a href="#">new</a>
-            <a href="#">past</a>
-            <a href="#">comments</a>
-            <a href="#">ask</a>
-            <a href="#">show</a>
-            <a href="#">jobs</a>
-            <a href="#">submit</a>
+            <h1 class="brand-name">Hacker News</h1>
+            <div class="links">
+              <a href="#">new</a>
+              <a href="#">past</a>
+              <a href="#">comments</a>
+              <a href="#">ask</a>
+              <a href="#">show</a>
+              <a href="#">jobs</a>
+              <a href="#">submit</a>
+            </div>
           </div>
         </div>
       </div>
