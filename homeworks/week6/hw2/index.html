@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="normalize.css">
+  <title>新拖延運動報名表單</title>
+  <style>
+    body {
+      background-color: #999999;
+      height: 1340px;
+      position: relative;
+    }
+    .form {
+      width: 645px;
+      
+      background-color: #fff;
+      box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+      margin: 110px auto 50px;
+      border-top: 8px solid #fad312;
+      
+    }
+    h1 {
+      margin: 0px;
+      font-size: 36px;
+    }
+    .form-content {
+      padding: 50px 0 35px 42px;
+    }
+    .form-desc {
+      margin: 20px 0;
+    }
+    .form-desc p,
+    p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .form-desc .not-null {
+      color: #e74149;
+      font-size: 16px;
+      margin: 20px 0 50px;
+    }
+    div {
+      margin: 50px 0;
+    }
+    label,
+    .categories-title {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    label::after, 
+    .categories-title::after {
+      content: '*';
+      color: #e74149;
+      margin-left: 5px;
+    }
+    input {
+      width: 287px;
+      height: 23px;
+      border: solid 1px #d0d0d0;
+    }
+    .category {
+      display: flex;
+      height: 30px;
+      margin: 10px 0;
+    }
+    .categories-title {
+      margin: 0 0 20px;
+    }
+    #on-bed, 
+    #on-phone {
+      width: 14px;
+      height: 14px;
+      margin-right: 10px;
+    }
+    .on-the-phone,
+    .on-the-bed {
+      font-size: 14px;
+    }
+    .on-the-phone::after,
+    .on-the-bed::after,
+    .other-comments::after {
+      content: '';
+    }
+    .other-comments {
+      margin: 0;
+    }
+    #other {
+      margin-top: 10px;
+    }
+    button {
+      width: 92px;
+      height: 40px;
+      background-color: #fad312;
+      border-radius: 3px;
+      border: 1px solid #fad312;
+      cursor: pointer;
+    }
+    footer {
+      width: 100%;
+      color: #999999;
+      background-color: black;
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid #fad312;
+      position: absolute;
+      bottom: 0;
+    }
+    @media (max-width: 768px) {
+      body {
+        margin: 0;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      .form {
+        width: 100%;
+      } 
+      .form-content {
+      padding: 30px;
+      }
+      input {
+        width: 250px;
+      }
+      footer {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="form">
+    <form class="form-content">
+      <h1>新拖延運動報名表單</h1>
+      <div class="form-desc">
+        <p>活動日期：2020/12/10 ~ 2020/12/11</p>
+        <p>活動地點：台北市大安區新生南路二段1號</p>
+        <p class="not-null">* 必填</p>
+      </div>
+      <div class="nick-name">
+        <label for="name">暱稱</label>
+        <input type="text" id="name" placeholder="您的回答">
+      </div>
+      <div class="email-address">
+        <label for="email">電子郵件</label>
+        <input type="email" id="email" placeholder="您的電子郵件">
+      </div>
+      <div class="cell-phone">
+        <label for="phone">手機號碼</label>
+        <input type="tel" id="phone" placeholder="您的手機號碼">
+      </div>
+      <div class="categories">
+        <p class="categories-title">報名類型</p>
+        <div class="category">
+          <input type="radio" id="on-bed" name="category">
+          <label for="on-bed" class="on-the-bed">躺在床上用想像力實作</label>
+        </div>
+        <div class="category">
+          <input type="radio" id="on-phone" name="category" value="on-phone">
+          <label for="on-phone" class="on-the-phone"> 趴在地上滑手機找現成的</label>
+      </div>
+      </div>
+      <div class="how-to-know">
+        <label for="activity">怎麼知道這個活動的？</label>
+        <input type="text" id="activity" placeholder="您的回答">
+      </div>
+      <div class="others">
+        <label for="other" class="other-comments">其他</label>
+        <p>對活動的一些建議</p>
+        <input type="text" id="other" placeholder="您的回答">
+      </div>
+      <button type="button">提交</button>
+      <p>請勿透過表單送出您的密碼。</p>
+    </form>
+  </section>
+  <footer>
+    © 2020 © Copyright. All rights Reserved.
+  </footer>
+</body>
+</html>
