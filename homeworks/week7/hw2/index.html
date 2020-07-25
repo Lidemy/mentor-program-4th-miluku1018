@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="normalize.css">
+  <title>餐廳官網</title>
+  <style>
+    .navbar {
+      box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+      background-color: #ffffff;
+    }
+    .navbar .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 84px;
+      max-width: 1280px;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+    .navbar__site-name {
+      color: #489846;
+      font-size: 36px;
+    }
+    .navbar__list {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      font-size: 18px;
+    }
+    .navbar__list li {
+      margin-left: 12px;
+      border-radius: 8px;
+      transition: background 0.1s ease-in;
+    }
+    .navbar__list li.active,
+    .navbar__list li:hover {
+      background: #ff7286;
+    }
+    .navbar__list li.active a,
+    .navbar__list li:hover a {
+      color: white;
+    }
+    .navbar__list li a {
+      display: block;
+      text-decoration: none;
+      color: black;
+      padding: 12px 24px;
+    }
+    @media(max-width: 768px) {
+      .navbar .wrapper {
+        height: 120px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0px;
+      }
+      .navbar__site-name {
+        margin-top: 10px;
+      }
+      .navbar__list {
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar__list li {
+        flex: 1;
+        margin-left: 0px;
+        border-radius: 0px;
+        text-align: center;
+      }
+    }
+    .section {
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 36px;
+      display: inline-block;
+      padding-left: 17px;
+      margin: 90px 0 40px 0;
+    }
+    .section__title {
+      border-left: 15px solid #a3dea2 ;
+    }
+    .FAQ_list {
+      width: 1080px;
+      margin: 0 auto;
+      border-bottom: 1px solid #a6e2c0;
+    }
+    .Q_box {
+      display: flex;
+      margin: 10px;
+    }
+    .box_number {
+      font-size: 24px;
+      color: #70b282;
+      margin: 15px;
+    }
+    .box_title {
+      padding: 20px 0;
+    }
+    .A_box {
+      display: none;
+      margin-bottom: 15px;
+      text-align: left;
+      padding-left: 87px;
+    }
+    footer {
+      margin-top: 48px;
+    }
+    .footer__top {
+      padding: 32px;
+      background-color: #e8efee;
+      color: #484848;
+    }
+    .footer__top .wrapper{
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      padding: 32px;
+    }
+    .footer__info div + div {
+      margin-top: 10px;
+    }
+
+    .footer_site {
+      padding: 32px;
+    }
+    .footer__site .site-name {
+      color: #489846;
+      font-size: 36px;
+      margin-bottom: 19px;
+    }
+    .footer__site .link a{
+      text-decoration: none;
+      color: #484848;
+    }
+    .footer__bottom {
+      background-color: #35564b;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+    }
+    @media(max-width: 768px) {
+      .footer__top .wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .footer__info {
+        margin: 16px 0 0 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="wrapper">
+      <div class="navbar__site-name">
+        Just A Bite!
+      </div>
+      <ul class="navbar__list">
+        <li class="active"><a href="#">抽個大獎</a></li>
+        <li><a href="#">我要點餐</a></li>
+        <li><a href="#">查詢訂單</a></li>
+        <li><a href="#">常見問題</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <section class="section">
+      <h2 class="section__title">FAQ - 常見問題</h2>
+      <div class="FAQ_list">
+        <div class="Q_box">
+          <div class="box_number">Q1 :</div>
+          <div class="box_title" onclick="myFunction()">如何查詢門市分店的電話及地址？</div>
+        </div>
+        <div class="A_box one">
+          歡迎您至本網頁點選「門市搜尋」搜尋縣市地區或是輸入地址查詢所需門市資訊或撥打顧客服務專線電話，查詢門市相關資訊。
+        </div>
+      </div>
+      <div class="FAQ_list">
+        <div class="Q_box">
+          <div class="box_number">Q2 :</div>
+          <div class="box_title" onclick="myFunction2()">門市的營業時間為何？</div>
+        </div>
+        <div class="A_box two">
+          不同區域營業時間略有不同，歡迎您至本網頁門市搜尋欲查詢門市的營業時間。
+        </div>
+      </div>
+      <div class="FAQ_list">
+        <div class="Q_box">
+          <div class="box_number">Q3 :</div>
+          <div class="box_title" onclick="myFunction3()">門市消費付款方式有哪些？</div>
+        </div>
+        <div class="A_box third">
+          門市接受現金、商品提貨券、信用卡（VISA、Master、JCB、AE、銀聯卡）、悠遊卡、Apple Pay、Android Pay、Samsung Pay、街口支付、支付寶、Line Pay、Watsons Pay。
+        </div>
+      </div>
+      <div class="FAQ_list">
+        <div class="Q_box">
+          <div class="box_number">Q4 :</div>
+          <div class="box_title" onclick="myFunction4()">是否有免付費服務專線？</div>
+        </div>
+        <div class="A_box four">
+          有的，顧客服務專線電話：0800-051-148（專線服務時間為：週一~週五上午09:00~下午18:00，週六日中午12:00~下午18:00，不包含國定假日）。
+        </div>
+      </div>
+      <div class="FAQ_list">
+        <div class="Q_box">
+          <div class="box_number">Q5 :</div>
+          <div class="box_title" onclick="myFunction5()">我要如何加盟？</div>
+        </div>
+        <div class="A_box five">
+          直營門市性質，無加盟門市，不開放對外加盟。
+        </div>
+      </div>
+      <div class="FAQ_list">
+        <div class="Q_box">
+          <div class="box_number">Q6 :</div>
+          <div class="box_title" onclick="myFunction6()">門市是否有提供紙袋？</div>
+        </div>
+        <div class="A_box six">
+          因91年7月起環保署實施「限用購物用塑膠袋」的政策，亦為強化消費者環保觀念、降低塑膠袋之使用量，該項政策，限用範圍內之商家，均不得主動提供塑膠袋予消費者，消費者如有需要，業者則會以另外收費。
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="footer__top">
+      <div class="wrapper">
+        <div class="footer__info">  
+          <div class="address">餐館地址: 天上地下天堂路三分之一里六段520號</div>
+          <div class="tel">訂位專線：02-1314-5566</div>
+          <div class="open__time">營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+          <div class="email">email：service@justabite.com.tw</div>
+        </div>
+        <div class="footer__site">
+          <div class="site-name">Just A Bite!</div>
+          <div class="link"><a href="#">Facebook / Instagram / Youtube</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有
+    </div>
+  </footer>
+  <script>
+    function myFunction() {
+      var x = document.querySelector('.A_box.one');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction2() {
+      var x = document.querySelector('.A_box.two');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction3() {
+      var x = document.querySelector('.A_box.third');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction4() {
+      var x = document.querySelector('.A_box.four');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction5() {
+      var x = document.querySelector('.A_box.five');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction6() {
+      var x = document.querySelector('.A_box.six');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
