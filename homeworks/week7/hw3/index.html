@@ -139,12 +139,12 @@
       waitingListIconsCheck.innerHTML = `<i class="far fa-check-circle"></i>`
       waitingListIconsDelete.innerHTML = `<i class="fas fa-trash-alt"></i>`
       // 添加 class 名稱
-      wrapper.className = 'wrapper';
-      waitingList.className = 'waiting_list';
-      waitingListItem.className = 'waiting_list_item';
-      waitingListIcons.className = 'waiting_list_icons';
-      waitingListIconsCheck.className = 'waiting_list_icons_delete_check'
-      waitingListIconsDelete.className = 'waiting_list_icons_delete'
+      wrapper.classList.add('wrapper');
+      waitingList.classList.add('waiting_list');
+      waitingListItem.classList.add('waiting_list_item');
+      waitingListIcons.classList.add('waiting_list_icons');
+      waitingListIconsCheck.classList.add('waiting_list_icons_delete_check');
+      waitingListIconsDelete.classList.add('waiting_list_icons_delete');
       // 添加元素，為父子層關係
       waitingListIcons.appendChild(waitingListIconsCheck);
       waitingListIcons.appendChild(waitingListIconsDelete);
