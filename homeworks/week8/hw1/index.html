@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="normalize.css">
+  <title>餐廳官網</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    .navbar {
+      box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+      background-color: #ffffff;
+    }
+    .navbar .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 84px;
+      max-width: 1280px;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+    .navbar__site-name {
+      color: #489846;
+      font-size: 36px;
+    }
+    .navbar__list {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      font-size: 18px;
+    }
+    .navbar__list li {
+      margin-left: 12px;
+      border-radius: 8px;
+      transition: background 0.1s ease-in;
+    }
+    .navbar__list li.active,
+    .navbar__list li:hover {
+      background: #ff7286;
+    }
+    .navbar__list li.active a,
+    .navbar__list li:hover a {
+      color: white;
+    }
+    .navbar__list li a {
+      display: block;
+      text-decoration: none;
+      color: black;
+      padding: 12px 24px;
+    }
+    @media(max-width: 768px) {
+      .navbar .wrapper {
+        height: 120px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0px;
+      }
+      .navbar__site-name {
+        margin-top: 10px;
+      }
+      .navbar__list {
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar__list li {
+        flex: 1;
+        margin-left: 0px;
+        border-radius: 0px;
+        text-align: center;
+      }
+    }
+    .section {
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 36px;
+      display: inline-block;
+      padding-left: 17px;
+      margin: 90px 0 40px 0;
+    }
+    .section__title {
+      border-left: 15px solid #a3dea2 ;
+    }
+    .wrapper.free-prize {
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      background-image: linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=400');
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .free-prize-content {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 600px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      color: #322929;
+    }
+    .free-prize-title {
+      color: #5ec1b6;
+      text-align: center;
+      margin: 0;
+      padding: 30px 0 10px;
+    }
+    .free-prize-timing,
+    .free-prize-desc,
+    .free-prize-award {
+      display: flex;
+      margin: 0 15px;
+      border-bottom: 2px solid rgba(235, 235, 235, 0.79);
+    }
+    .free-prize-timing h3,
+    .free-prize-desc h3,
+    .free-prize-award h3{
+      width: 100px;
+    }
+    .free-prize-timing p,
+    .free-prize-desc p,
+    .free-prize-award p{
+      width: 350px;
+      padding: 0 10px;
+      box-sizing: border-box;
+      letter-spacing: 2px;
+    }
+    .free-prize-timing p {
+      line-height: 24px;
+      width: 350px;
+    }
+    .free-prize button {
+      background-color: #e62a45;
+      width: 75%;
+      height: 55px;
+      border-radius: 5px;
+      border: none;
+      color: #ffffff;
+      font-size: 20px;
+      margin: 30px auto 20px; 
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .wrapper.free-prize {
+        width: 100%;
+        height: 100vh;
+        background-image:  linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+      }
+      .free-prize-title {
+        padding: 10px;
+        word-break: keep-all;
+      }
+      .free-prize-content {
+        width: 100%;
+        top: 20px;
+
+      }
+      .free-prize-timing,
+      .free-prize-desc,
+      .free-prize-award {
+        display: flex;
+        flex-direction: column;
+      }
+      .free-prize-timing h3,
+    .free-prize-desc h3,
+    .free-prize-award h3{
+      margin: 10px 0 0;
+    }
+      .free-prize button {
+        margin: 10px auto;
+      }
+    }
+    .footer__top {
+      padding: 32px;
+      background-color: #e8efee;
+      color: #484848;
+    }
+    .footer__top .wrapper{
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      padding: 32px;
+    }
+    .footer__info div + div {
+      margin-top: 10px;
+    }
+    .footer_site {
+      padding: 32px;
+    }
+    .footer__site .site-name {
+      color: #489846;
+      font-size: 36px;
+      margin-bottom: 19px;
+    }
+    .footer__site .link a{
+      text-decoration: none;
+      color: #484848;
+    }
+    .footer__bottom {
+      background-color: #35564b;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+    }
+    @media(max-width: 768px) {
+      .footer__top .wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .footer__info {
+        margin: 16px 0 0 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="wrapper">
+      <div class="navbar__site-name">
+        Just A Bite!
+      </div>
+      <ul class="navbar__list">
+        <li class="active"><a href="#">抽個大獎</a></li>
+        <li><a href="#">我要點餐</a></li>
+        <li><a href="#">查詢訂單</a></li>
+        <li><a href="#">常見問題</a></li>
+      </ul>
+    </div>
+  </nav>
+  <section class="wrapper free-prize">
+    <div class="free-prize-content">
+      <h2 class="free-prize-title">2020 夏日輕盈特賞！ 抽獎活動辦法</h2>
+      <div class="free-prize-timing">
+        <h3>活動期間：</h3>
+        <p>2020/06/01~2020/07/01</p>
+      </div>
+      <div class="free-prize-desc">
+        <h3>活動說明：</h3>
+        <p>今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 - 頭獎日本東京來回雙人遊！</p>
+      </div>
+      <div class="free-prize-award">
+        <h3>獎  品：</h3>
+        <div class="free-prize-award-details">
+          <p>❤ 頭獎一名：日本東京來回雙人遊(市價14990元)</p>
+          <p>❤ 貳獎三名：90 吋電視一台(市價5990元)</p>
+          <p>❤ 參獎十名：知名 YouTuber 簽名握手會入場券一張(市價1500元)</p>
+        </div>
+      </div>
+      <button type="submit">我要抽獎</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer__top">
+      <div class="wrapper">
+        <div class="footer__info">  
+          <div class="address">餐館地址: 天上地下天堂路三分之一里六段520號</div>
+          <div class="tel">訂位專線：02-1314-5566</div>
+          <div class="open__time">營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+          <div class="email">email：service@justabite.com.tw</div>
+        </div>
+        <div class="footer__site">
+          <div class="site-name">Just A Bite!</div>
+          <div class="link"><a href="#">Facebook / Instagram / Youtube</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有
+    </div>
+  </footer>
+  <script>
+    
+  </script>
+</body>
+</html>
