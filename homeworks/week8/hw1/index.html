@@ -87,22 +87,60 @@
     .section__title {
       border-left: 15px solid #a3dea2 ;
     }
-    .wrapper.free-prize {
+    .free-prize {
       width: 100%;
       height: 100vh;
       top: 0;
+    }
+    .free-prize-content {
+      width: 100%;
+      height: 100vh;
       background-image: linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=400');
       background-size: cover;
       background-repeat: no-repeat;
       position: relative;
     }
-    .free-prize-content {
+    .free-prize-content.first {
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      background-image: linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('./first.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .free-prize-content.second {
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      background-image: linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('./second.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .free-prize-content.third {
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      background-image: linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('./third.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .free-prize-content.none {
+      width: 100%;
+      height: 100vh;
+      background-image: none;
+      background-color: #322929;
+    }
+    .free-prize-content.none .free-prize-title {
+      color: #ffffff;
+    }
+    .free-prize-content-notice {
       position: absolute;
       top: 50px;
       left: 50%;
       transform: translateX(-50%);
-      width: 500px;
-      height: 600px;
       background-color: #ffffff;
       border-radius: 16px;
       color: #322929;
@@ -139,20 +177,20 @@
     }
     .free-prize button {
       background-color: #e62a45;
-      width: 75%;
+      width: 400px;
       height: 55px;
       border-radius: 5px;
       border: none;
       color: #ffffff;
       font-size: 20px;
-      margin: 30px auto 20px; 
+      margin: 50px auto 30px; 
       display: block;
     }
     @media (max-width: 768px) {
-      .wrapper.free-prize {
+      .free-prize {
         width: 100%;
         height: 100vh;
-        background-image:  linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+      
       }
       .free-prize-title {
         padding: 10px;
@@ -161,7 +199,7 @@
       .free-prize-content {
         width: 100%;
         top: 20px;
-
+        background-image:  linear-gradient(rgba(245, 245, 245, 0.803),rgba(235, 235, 235, 0.523)), url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
       }
       .free-prize-timing,
       .free-prize-desc,
@@ -238,24 +276,25 @@
   </nav>
   <section class="wrapper free-prize">
     <div class="free-prize-content">
-      <h2 class="free-prize-title">2020 夏日輕盈特賞！ 抽獎活動辦法</h2>
-      <div class="free-prize-timing">
-        <h3>活動期間：</h3>
-        <p>2020/06/01~2020/07/01</p>
-      </div>
-      <div class="free-prize-desc">
-        <h3>活動說明：</h3>
-        <p>今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 - 頭獎日本東京來回雙人遊！</p>
-      </div>
-      <div class="free-prize-award">
-        <h3>獎  品：</h3>
-        <div class="free-prize-award-details">
+      <div class="free-prize-content-notice">
+        <h2 class="free-prize-title">2020 夏日輕盈特賞！ 抽獎活動辦法</h2>
+        <div class="free-prize-timing">
+          <h3>活動期間：</h3>
+          <p>2020/06/01~2020/07/01</p>
+        </div>
+        <div class="free-prize-desc">
+          <h3>活動說明：</h3>
+          <p>今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 - 頭獎日本東京來回雙人遊！</p>
+        </div>
+        <div class="free-prize-award">
+          <h3>獎  品：</h3>
+          <div class="free-prize-award-details">
           <p>❤ 頭獎一名：日本東京來回雙人遊(市價14990元)</p>
           <p>❤ 貳獎三名：90 吋電視一台(市價5990元)</p>
           <p>❤ 參獎十名：知名 YouTuber 簽名握手會入場券一張(市價1500元)</p>
         </div>
       </div>
-      <button type="submit">我要抽獎</button>
+      <button class="btn" type="button">我要抽獎</button>
     </div>
   </section>
 
@@ -279,6 +318,58 @@
     </div>
   </footer>
   <script>
+    const request = new XMLHttpRequest()
+    const container = document.querySelector('.free-prize')
+
+    document.querySelector('.free-prize').addEventListener('click', function (){
+      request.addEventListener('load', function() {
+        const response = request.responseText;
+        const json = JSON.parse(response);
+        const prize = json.prize;
+        const error = json.error;
+        if (prize === 'FIRST') {
+          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+          const newFreePrize = document.createElement('div')
+          newFreePrize.classList.add('free-prize-content')
+          newFreePrize.classList.add('first')
+          newFreePrize.innerHTML = `    
+            <h2 class="free-prize-title">恭喜你中頭獎了！日本東京來回雙人遊！</h2>
+            <button class="btn">我要抽獎</button>`
+          container.appendChild(newFreePrize);
+        } else if (prize === 'SECOND') {
+          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+          const newFreePrize = document.createElement('div')
+          newFreePrize.classList.add('free-prize-content')
+          newFreePrize.classList.add('second')
+          newFreePrize.innerHTML = `    
+            <h2 class="free-prize-title">二獎！90 吋電視一台！</h2>
+            <button class="btn">我要抽獎</button>`
+            container.appendChild(newFreePrize);
+        } else if  (prize === 'THIRD') {
+          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+          const newFreePrize = document.createElement('div')
+          newFreePrize.classList.add('free-prize-content')
+          newFreePrize.classList.add('third')
+          newFreePrize.innerHTML = `    
+            <h2 class="free-prize-title">恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！</h2>
+            <button class="btn">我要抽獎</button>`
+            container.appendChild(newFreePrize);
+        } else if  (prize === 'NONE') {
+          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+          const newFreePrize = document.createElement('div')
+          newFreePrize.classList.add('free-prize-content')
+          newFreePrize.classList.add('none')
+          newFreePrize.innerHTML = `    
+            <h2 class="free-prize-title">銘謝惠顧</h2>
+            <button class="btn">我要抽獎</button>`
+            container.appendChild(newFreePrize);
+        } else if (error === true) {
+          alert('系統不穩定，請再試一次')
+        }
+      })
+      request.open('GET', 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery', true)
+      request.send()
+    })
     
   </script>
 </body>
