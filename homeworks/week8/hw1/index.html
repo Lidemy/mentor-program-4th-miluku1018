@@ -297,7 +297,6 @@
       <button class="btn" type="button">我要抽獎</button>
     </div>
   </section>
-
   <footer>
     <div class="footer__top">
       <div class="wrapper">
@@ -318,17 +317,50 @@
     </div>
   </footer>
   <script>
-    const request = new XMLHttpRequest()
-    const container = document.querySelector('.free-prize')
+    const apiURL = 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery';
+    const errorMessage = '系統不穩定，請再試一次';
 
-    document.querySelector('.free-prize').addEventListener('click', function (){
+    function getPrize(cb) {
+      const request = new XMLHttpRequest();
+      request.open('GET', apiURL, true);
       request.addEventListener('load', function() {
         const response = request.responseText;
-        const json = JSON.parse(response);
-        const prize = json.prize;
-        const error = json.error;
+        if (request.status >= 200 && request.status < 400) {
+          let data
+          try {
+            data = JSON.parse(response);
+          } catch(err) {
+            cb(errorMessage);
+            return;
+          }
+          if (!data.prize) {
+            cb(errorMessage);
+            return;
+          }
+          cb(null, data)
+        } else {
+          cb(errorMessage);
+        }
+      })
+      request.onerror = function() {
+        cb(errorMessage);
+            return;
+      }
+      request.send();
+    }
+
+    document.querySelector('.free-prize').addEventListener('click', () => {
+      getPrize(function(err, data){
+        if (err) {
+          alert(err);
+          return
+        }
+ 
+        const container = document.querySelector('.free-prize');
+        const prize = data.prize;
+      
         if (prize === 'FIRST') {
-          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'));
           const newFreePrize = document.createElement('div')
           newFreePrize.classList.add('free-prize-content')
           newFreePrize.classList.add('first')
@@ -336,39 +368,35 @@
             <h2 class="free-prize-title">恭喜你中頭獎了！日本東京來回雙人遊！</h2>
             <button class="btn">我要抽獎</button>`
           container.appendChild(newFreePrize);
-        } else if (prize === 'SECOND') {
-          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
-          const newFreePrize = document.createElement('div')
-          newFreePrize.classList.add('free-prize-content')
-          newFreePrize.classList.add('second')
-          newFreePrize.innerHTML = `    
-            <h2 class="free-prize-title">二獎！90 吋電視一台！</h2>
-            <button class="btn">我要抽獎</button>`
-            container.appendChild(newFreePrize);
-        } else if  (prize === 'THIRD') {
-          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
-          const newFreePrize = document.createElement('div')
-          newFreePrize.classList.add('free-prize-content')
-          newFreePrize.classList.add('third')
-          newFreePrize.innerHTML = `    
-            <h2 class="free-prize-title">恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！</h2>
-            <button class="btn">我要抽獎</button>`
-            container.appendChild(newFreePrize);
-        } else if  (prize === 'NONE') {
-          document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
-          const newFreePrize = document.createElement('div')
-          newFreePrize.classList.add('free-prize-content')
-          newFreePrize.classList.add('none')
-          newFreePrize.innerHTML = `    
-            <h2 class="free-prize-title">銘謝惠顧</h2>
-            <button class="btn">我要抽獎</button>`
-            container.appendChild(newFreePrize);
-        } else if (error === true) {
-          alert('系統不穩定，請再試一次')
-        }
+          } else if (prize === 'SECOND') {
+            document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+            const newFreePrize = document.createElement('div')
+            newFreePrize.classList.add('free-prize-content')
+            newFreePrize.classList.add('second')
+            newFreePrize.innerHTML = `    
+              <h2 class="free-prize-title">二獎！90 吋電視一台！</h2>
+              <button class="btn">我要抽獎</button>`
+              container.appendChild(newFreePrize);
+          } else if (prize === 'THIRD') {
+            document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+            const newFreePrize = document.createElement('div')
+            newFreePrize.classList.add('free-prize-content')
+            newFreePrize.classList.add('third')
+            newFreePrize.innerHTML = `    
+              <h2 class="free-prize-title">恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！</h2>
+              <button class="btn">我要抽獎</button>`
+              container.appendChild(newFreePrize);
+          } else if (prize === 'NONE') {
+            document.querySelector('.free-prize').removeChild(document.querySelector('.free-prize-content'))
+            const newFreePrize = document.createElement('div')
+            newFreePrize.classList.add('free-prize-content')
+            newFreePrize.classList.add('none')
+            newFreePrize.innerHTML = `    
+              <h2 class="free-prize-title">銘謝惠顧</h2>
+              <button class="btn">我要抽獎</button>`
+              container.appendChild(newFreePrize);
+          }
       })
-      request.open('GET', 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery', true)
-      request.send()
     })
     
   </script>
