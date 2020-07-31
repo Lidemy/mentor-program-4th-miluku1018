@@ -311,8 +311,8 @@
   <script>
     const apiURL = 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery';
     const errorMessage = '系統不穩定，請再試一次';
-
-    function getPrize(cb) {
+    // 抽獎， 如果有錯誤就會放在第一個參數，如果沒有錯誤就會把資料放在第二個參數
+    function getPrize(callback) {
       const request = new XMLHttpRequest();
       request.open('GET', apiURL, true);
       request.addEventListener('load', function() {
@@ -322,32 +322,35 @@
           try {
             data = JSON.parse(response);
           } catch(err) {
-            cb(errorMessage);
+            callback(errorMessage);
             return;
           }
           if (!data.prize) {
-            cb(errorMessage);
+            callback(errorMessage);
             return;
           }
-          cb(null, data)
+          // null 沒有錯誤， data 回傳
+          callback(null, data) 
         } else {
-          cb(errorMessage);
+          callback(errorMessage);
         }
       })
       request.onerror = function() {
-        cb(errorMessage);
+        callback(errorMessage);
             return;
       }
       request.send();
     }
 
     document.querySelector('.free-prize').addEventListener('click', () => {
+      // call API 抽獎
       getPrize(function(err, data){
+        // 如果有錯誤，就會跳出通知，return 終止執行
         if (err) {
           alert(err);
           return
         }
- 
+        // 如果沒有錯誤，就會執行以下畫面顯示
         const container = document.querySelector('.free-prize');
         const prize = data.prize;
       
