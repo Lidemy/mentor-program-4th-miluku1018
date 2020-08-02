@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel</title>
+  <style>
+    .carousel {
+      width: 600px;
+      height: 500px;
+      margin: 0 auto;
+    }
+    .carousel_items {
+      display: block;
+      width: 600px;
+      height: 400px;
+      overflow: hidden;
+      border: 5px solid #cccccc;
+      position: relative;
+    }
+    .carousel__left {
+      position: absolute;
+      font-size: 28px;
+      color: #ffffff;
+      top: 200px;
+      left: 420px;
+      z-index: 5;
+    }
+    .carousel__right {
+      position: absolute;
+      font-size: 28px;
+      color: #ffffff;
+      top: 200px;
+      right: 420px;
+      z-index: 5;
+    }
+    .carousel__button:hover {
+      cursor: pointer;
+      color: rgb(223, 222, 222);
+    }
+    .carousel__img {
+      display: none;
+      position: absolute;
+    }
+    .current {
+      display: inline-block;
+      transform: translateX(0%);
+      transition: all 0.9s ease;
+      z-index: 3;
+    }
+    .right {
+      display: inline-block;
+      transform: translateX(-100%);
+      opacity: 0;
+      transition: all 0.9s ease;
+    }
+    .left {
+      display: inline-block;
+      transform: translateX(100%);
+      opacity: 0;
+      transition: all 0.9s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="carousel_items">
+      <img src="https://images.unsplash.com/photo-1574624046652-f6513419e6f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=400" class="carousel__img current" alt="img1">
+      <img src="https://images.unsplash.com/photo-1564427014778-970b8db4af43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=400" class="carousel__img right" alt="img2">
+      <img src="https://images.unsplash.com/photo-1515095584789-8e7e940061c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=400" class="carousel__img" alt="img3">
+      <img src="https://images.unsplash.com/photo-1508085113122-61637acbc7bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=400" class="carousel__img left" alt="img4">
+    </div>
+    <div class="carousel__left carousel__button">&lt;</div>
+    <div class="carousel__right carousel__button">&gt;</div>
+  </div>
+  <script>
+    // 取得圖片陣列
+    const imgList = document.querySelectorAll('.carousel__img');
+    // 設定初始圖片
+    let currentImg = 0;
+    let leftImg = imgList.length - 1
+    let rightImg = 1; 
+    // 圖片是否為移動中
+    let moving = false;
+
+    document.querySelector('.carousel').addEventListener('click', function (evt) {
+      // 當圖片在移動中，設定按鈕失效，避免重複點擊按鈕，導致圖片重疊的狀態
+      if (moving) return
+      moving = true
+      setTimeout(() => { moving = false }, 500)
+ 
+      // 判斷點擊的按鈕是否包含 carousel__left，如果有，方向就是 左邊，反之，右邊
+      const direction = evt.target.classList.contains('carousel__left') ? 'left' : 'right';
+      const opposite = (direction === 'right') ? 'left': 'right';
+      const nextIndex = (direction === 'right') ? rightImg : leftImg;
+      // 當方向為右時，current 往右移，左邊的圖會往右移到 current，使用 opposite，將 current 目前位置變更為 left
+      imgList[currentImg].className = `carousel__img ${opposite}`;
+      // 當方向為右時，current 下一個位置的值，為 rightImg
+      imgList[nextIndex].className = 'carousel__img current';
+      currentImg = nextIndex;
+      // 當方向為右邊時，rightImg數值會 ＋1
+      if (direction === 'right') {
+        rightImg = (rightImg + 1 > imgList.length - 1) ? 0 : rightImg + 1;
+        imgList[rightImg].className = `carousel__img right`;
+      }
+      // 當方向為左邊時，leftImg數值會 -1
+      if (direction === 'left') {
+        leftImg = (leftImg - 1 < 0) ? imgList.length - 1 : leftImg - 1;
+        imgList[leftImg].className = `carousel__img left`;
+      }
+    })
+  </script>
+</body>
+</html>
