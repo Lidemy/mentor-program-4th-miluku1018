@@ -35,7 +35,7 @@
     <div class="nav">
       <div class="title">
         <h1>後台留言板</h1>
-        <a href="index.php">前台留言板</a>
+        <a href="index.php" class="back_to_front">返回留言板</a>
         <?php
           if (!empty($_GET['errCode'])) {
             $code = $_GET['errCode'];

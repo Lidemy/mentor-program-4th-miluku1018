@@ -4,8 +4,8 @@
   require_once('utils.php');
 
   if (
-    empty($_GET['id']) ||
-    empty($_GET['role'])
+    empty(trim($_GET['id'])) ||
+    empty(trim($_GET['role']))
   ) {
     die('資料不齊全');
   }

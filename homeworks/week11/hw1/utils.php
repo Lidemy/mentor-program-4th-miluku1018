@@ -9,8 +9,10 @@
   function getUserFromUsername($username) {
     global $conn;
 
-    $sql = sprintf("SELECT * FROM Miaohsien_users WHERE username= '%s'", $username);
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM Miaohsien_users WHERE username= ?");
+    $stmt->bind_param("s", $username);
+    $result = $stmt->execute();
+    $result = $stmt->get_result();
     $row = $result->fetch_assoc();
     return $row; // username, nickname, role
   }

@@ -2,7 +2,7 @@
   session_start();
   require_once('conn.php');
 
-  if (empty($_POST['username']) || empty($_POST['password'])) {
+  if (empty(trim($_POST['username'])) || trim(empty($_POST['password']))) {
     header('Location: login.php?errCode=1');
     die();
   } elseif  (!ctype_alnum($_POST['username'])) {

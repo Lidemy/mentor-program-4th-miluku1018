@@ -72,7 +72,7 @@
           <a href="register.php">註冊</a>
           <a href="login.php">登入</a>
         <?php } else { ?>
-          <h3 class='nickname'>您好，<?php echo $user['nickname'] ?></h3>
+          <h3 class='nickname'>您好，<?php echo escape($user['nickname']) ?></h3>
           <input type="button" class="new-nickname" value="編輯暱稱">
           <?php if ($user && $user['role'] === "ADMIN") { ?>
             <a href="admin.php">管理後台</a>
@@ -108,8 +108,8 @@
             <div class="comment-time"><?php echo escape($row['created_at']) ?></div>
             <div class="status">
             <?php if (hasPermission($user, 'update', $row)) { ?>
-              <a href="edit_comment.php?id=<?php echo $row['id'] ?>">編輯</a>
-              <a href="delete_comment.php?id=<?php echo $row['id'] ?>">刪除</a>
+              <a href="edit_comment.php?id=<?php echo escape($row['id']) ?>">編輯</a>
+              <a href="delete_comment.php?id=<?php echo escape($row['id']) ?>">刪除</a>
             <?php } ?>   
             </div>
           </div>

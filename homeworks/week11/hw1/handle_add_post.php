@@ -3,7 +3,7 @@
   require_once('conn.php');
   require_once('utils.php');
 
-  if (empty($_POST['content'])) {
+  if (empty(trim($_POST['content']))) {
     header('Location: index.php?errCode=1');
     die('資料不齊全');
   }

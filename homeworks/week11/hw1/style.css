@@ -172,3 +172,17 @@ caption {
   font-size: 19px;
   margin: 10px;
 }
+.back_to_front {
+  text-decoration: none;
+  color: #f2fc6a;
+  background-color: #2a2a2a;
+  border-radius: 3px;
+  padding: 5px;
+}
+.user-list a {
+  color: #f2fc6a;
+  text-decoration: none;
+}
+.user-list a:hover {
+  color: #2a2a2a;
+}
