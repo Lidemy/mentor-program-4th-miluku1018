@@ -2,7 +2,7 @@
   require_once('conn.php');
 
   if (empty($_POST['name'])) {
-    header('Location: add_category.php?errCode=1');
+    header('Location: add_admin_category.php?errCode=1');
     die();
   }
   $name = $_POST['name'];
@@ -16,5 +16,5 @@
     die($conn->error);
   }
 
-  header('Location: categories.php');
+  header('Location: admin_categories.php');
 ?>

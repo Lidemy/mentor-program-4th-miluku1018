@@ -31,7 +31,7 @@
       <ul class="navbar__list">
         <div>
           <li><a href="list.php">文章列表</a></li>
-          <li><a href="categories.php">分類專區</a></li>
+          <li><a href="admin_categories.php">管理分類</a></li>
           <li><a href="about.php">關於我</a></li>
         </div>
         <div>

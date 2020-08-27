@@ -44,8 +44,8 @@
           <li><a href="about_me.php">關於我</a></li>
         </div>
         <div>
-          <li><a href="admin.html">管理後台</a></li>
-          <li><a href="#">登出</a></li>
+          <li><a href="admin.php">管理後台</a></li>
+          <li><a href="logout.php">登出</a></li>
         </div>
       </ul>
     </div>
@@ -80,7 +80,7 @@
               <?php 
                 while ($row_category = $result_category->fetch_assoc()) {
                   $id = $row_category['id'];
-                  $name = $row_category['name'];
+                  $name = escape($row_category['name']);
                   $is_checked = $row['category_id'] === $id ? "selected" : "";
                   echo "<option value='$id' $is_checked>$name</option>";
                 }

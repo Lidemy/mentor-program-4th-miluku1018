@@ -13,5 +13,5 @@
     die($conn->error);
   }
 
-  header('Location: categories.php');
+  header('Location: admin_categories.php');
 ?>
