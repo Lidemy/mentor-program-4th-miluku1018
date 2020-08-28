@@ -1,6 +1,8 @@
 <?php
+  session_start();
   require_once('conn.php');
   require_once('utils.php');
+  require_once('check_permission.php');
 
   $stmt = $conn->prepare('SELECT * FROM Miaohsien_articles WHERE is_deleted IS NULL ORDER BY created_at DESC');
   $result = $stmt->execute();
@@ -11,36 +13,16 @@
   $result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta charset="utf-8">
-
   <title>部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <nav class="navbar">
-    <div class="wrapper navbar__wrapper">
-      <div class="navbar__site-name">
-        <a href='index.php'>Miaohsien's Blog</a>
-      </div>
-      <ul class="navbar__list">
-        <div>
-          <li><a href="list.php">文章列表</a></li>
-          <li><a href="admin_categories.php">管理分類</a></li>
-          <li><a href="about.php">關於我</a></li>
-        </div>
-        <div>
-          <li><a href="add_article.php">新增文章</a></li>
-          <li><a href="logout.php">登出</a></li>
-        </div>
-      </ul>
-    </div>
-  </nav>
+  <?php include_once('back_head.php') ?>
   <section class="banner">
     <div class="banner__wrapper">
       <h1>管理後台</h1>

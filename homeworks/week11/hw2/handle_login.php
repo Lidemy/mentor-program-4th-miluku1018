@@ -31,7 +31,7 @@
   if (password_verify($password, $row['password'])) {
     // 登入成功
     $_SESSION['username'] = $username;
-    header('Location: admin.php'); 
+    header('Location: index.php'); 
   } else {
     header('Location: login.php?errCode=2');
   }

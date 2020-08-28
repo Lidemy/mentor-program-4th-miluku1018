@@ -1,6 +1,8 @@
 <?php
+  session_start();
   require_once('conn.php');
   require_once('utils.php');
+  require_once('check_permission.php');
 
   $id = $_GET['id'];
   $stmt = $conn->prepare('SELECT * FROM Miaohsien_articles WHERE id = ? ORDER BY created_at DESC');
@@ -20,36 +22,16 @@
 ?>
 
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta charset="utf-8">
-
   <title>部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <nav class="navbar">
-    <div class="wrapper navbar__wrapper">
-      <div class="navbar__site-name">
-        <a href='index.php'>Miaohsien's Blog</a>
-      </div>
-      <ul class="navbar__list">
-        <div>
-          <li><a href="list.php">文章列表</a></li>
-          <li><a href="categories.php">分類專區</a></li>
-          <li><a href="about_me.php">關於我</a></li>
-        </div>
-        <div>
-          <li><a href="admin.php">管理後台</a></li>
-          <li><a href="logout.php">登出</a></li>
-        </div>
-      </ul>
-    </div>
-  </nav>
+  <?php include_once('back_head.php') ?>
   <section class="banner">
     <div class="banner__wrapper">
       <h1>存放技術之地</h1>
@@ -92,6 +74,7 @@
           </div>
           <div class="edit-post__btn-wrapper">
             <input type="hidden" name="id" value="<?php echo escape($row['id']) ?>">
+            <input type="hidden" name="page" value="<?php echo escape($_SERVER['HTTP_REFERER']) ?>">
             <input class="edit-post__btn" type="submit" value="送出">
           </div>
         </form>

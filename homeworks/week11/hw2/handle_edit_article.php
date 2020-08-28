@@ -1,6 +1,7 @@
 <?php
   require_once('conn.php');
 
+  $page = $_POST['page'];
   if (empty($_POST['title']) || empty($_POST['content'])) {
     header('Location: edit_article.php?errCode=1');
     die();
@@ -20,5 +21,5 @@
     die($conn->error);
   }
 
-  header('Location: admin.php');
+  header('Location:' . $page);
 ?>
