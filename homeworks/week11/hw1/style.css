@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(41, 78, 41);
+  
+}
+h3 {
+  color: #061c06;
+  display: inline-block;
+  font-size: 24px;
+}
+.warning {
+  color: rgb(20, 49, 20);
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px 0;
+}
+.container {
+  background-color: rgb(104, 150, 104);
+  max-width: 800px;
+  margin: 20px auto;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 3px;
+
+}
+.container .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .nav .link .nickname {
+  margin-right: 20px;
+}
+.container .nav .link a {
+  text-decoration: none;
+  background-color: rgb(41, 78, 41);
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 30px;
+}
+.container .nav .link a:hover {
+  background-color: #ffffff;
+  color: #058203;
+  transition: .6s linear;
+}
+.error {
+  color: #ca2525d6;
+}
+.new-nickname {
+  text-decoration: none;
+  background-color: rgb(41, 78, 41);
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 30px;
+  font-size: 18px;
+}
+.container .update-nickname {
+  border-bottom: none;
+}
+.hide {
+  display: none;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid rgb(41, 78, 41);
+}
+.container form textarea {
+  background-color: #ffffff;
+  color: #095f09;
+  border-radius: 8px;
+}
+.container form input {
+  width: 100px;
+  background-color: rgb(41, 78, 41);
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+  box-shadow: 1px 1px 3px #585858;
+}
+.container form input:hover {
+  background-color: #ffffff;
+  color: #058203;
+  transition: .6s linear;
+}
+.login-warning {
+  margin: 15px 0;
+  color: #ca2525d6;
+}
+.comments {
+  margin: 10px 0;
+}
+.comments .card {
+  background-color: #ffffff;
+  border: none;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  display: flex;
+  padding: 5px;
+  margin: 15px 0;
+}
+.comments .card .avatar{
+  background-color: #f2fc6a;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.comments .card .desc {
+  margin-left: 5px;
+}
+.comments .card .user-info {
+  padding: 5px;
+  display: flex;
+}
+.comments .card .user-info .nickname {
+  color: #061c06;
+  font-weight: bold;
+}
+.comments .card .comment-time {
+  color: rgb(150, 150, 150);
+  padding-left: 15px;
+}
+.comments .card .status{
+  margin-left: 10px;
+}
+.comments .card .status a{
+  text-decoration: none;
+  color: darkolivegreen;
+}
+.comments .card .messages {
+  padding: 5px;
+  word-wrap: break-word;
+  white-space: pre-line;
+  color: rgb(41, 78, 41);
+}
+/* register */
+.container form .form-desc input {
+  width: 150px;
+}
+.board-hr {
+  color: rgb(41, 78, 41);
+}
+.page-info {
+  text-align: center;
+}
+.paginator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.paginator a {
+  text-decoration: none;
+  padding: 0 5px;
+  color: #b7ff3c;
+}
+table {
+  width: 600px;
+  border: 2px solid #ffffff;
+}
+table tbody {
+  text-align: center;
+}
+caption {
+  font-size: 19px;
+  margin: 10px;
+}
+.back_to_front {
+  text-decoration: none;
+  color: #f2fc6a;
+  background-color: #2a2a2a;
+  border-radius: 3px;
+  padding: 5px;
+}
+.user-list a {
+  color: #f2fc6a;
+  text-decoration: none;
+}
+.user-list a:hover {
+  color: #2a2a2a;
+}
