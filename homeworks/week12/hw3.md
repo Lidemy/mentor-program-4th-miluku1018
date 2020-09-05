@@ -12,15 +12,15 @@
 [參考來源](https://medium.com/schaoss-blog/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%8D%81-18-fe-%E7%82%BA%E4%BB%80%E9%BA%BC%E7%B6%B2%E7%AB%99%E8%A6%81%E5%81%9A%E6%88%90-spa-ssr-%E7%9A%84%E5%84%AA%E9%BB%9E%E6%98%AF%E4%BB%80%E9%BA%BC-c926145078a4)
 
 ## 這週這種後端負責提供只輸出資料的 API，前端一律都用 Ajax 串接的寫法，跟之前透過 PHP 直接輸出內容的留言板有什麼不同？
-* Server-side render
-   - 把資料拿出來
+* Server-side render /透過後端直接輸出內容
+   - 把資料從資料庫拿出來
    - 把資料跟 HTML 結合（UI）在一起
    - 回傳 HTML
    - browser render: 留言板
    - 在 server-side 就把資料跟 UI 綁在一起，所以，browser 看到什麼，就是什麼
    - 一拿到 response 就有資料，也就是說搜尋引擎可以正常抓到資料。
  ---
-* Client-side render
+* Client-side render /後端只負責提供資料只輸出資料的 API，前端用 Ajax 串接
   -  API => 把資料拿出來/ 變成某種格式(JSON)/ 回傳 
   -  API 純資料，不會有跟介面相關的任何東西
   -  後端只負責回傳資料，前端負責用 JavaScript render，代表 browser 看到的 HTML 會是空的。當載入 HTML後，才執行 JavaScript，而 JavaScript 再去後端拿資料，拿完資料在用 JavaScript 動態產生內容上去。
