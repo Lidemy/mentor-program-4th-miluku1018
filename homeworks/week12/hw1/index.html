@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://bootswatch.com/4/minty/bootstrap.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script>
+    function escape(toOutput){
+    return toOutput.replace(/\&/g, '&amp;')
+      .replace(/\</g, '&lt;')
+      .replace(/\>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/\'/g, '&#x27')
+      .replace(/\//g, '&#x2F')
+    }
+
+    function appendCommentToDom(container, comment, isPrepend) {
+      const html = `
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${comment.id} ${escape(comment.nickname)}</h5>
+          <p class="card-text">${escape(comment.content)}</p>
+        </div>
+      </div>`
+      if (isPrepend) {
+        container.prepend(html)
+      } else {
+        container.append(html)
+      }
+    }
+    
+    function getCommentsAPI(siteKey, before, cb) {
+      let url = `http://localhost:8080/newboard/api_comments.php?site_key=${siteKey}`
+      if (before) {
+        url += '&before=' + before
+      }
+      $.ajax({
+        // 與變數名稱同名可以不寫
+        url,
+      }).done(function(data) {
+        cb(data)
+      })
+    }
+    const siteKey = 'huli'
+    const loadMoreButtonHTML = '<button class="load-more btn btn-outline-primary mt-3">載入更多</button>'
+    let lastId = null
+    let isEnd = false
+    $(document).ready(() => {
+      const commentDOM = $('.comments')
+      getComments();
+
+      $('.comments').on('click', '.load-more', () => {
+        getComments();
+      })
+
+      $('.add-comment-form').submit(e => {
+        e.preventDefault();
+        const newCommentData = {
+          site_key: 'huli',
+          nickname: $('input[name=nickname]').val(),
+          content: $('textarea[name=content]').val()
+        }
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8080/newboard/api_add_comments.php',
+          data: newCommentData
+        }).done(function(data) {
+          if (!data.ok) {
+            alert(data.message);
+            return
+          }
+          nickname: $('input[name=nickname]').val('')
+          content: $('textarea[name=content]').val('')
+          appendCommentToDom(commentDOM, newCommentData, true)
+        })
+      })
+
+      function getComments() {
+        const commentDOM = $('.comments')
+        $('.load-more').hide()
+        if (isEnd) {
+          return
+        }
+        getCommentsAPI(siteKey, lastId, data => {
+          if (!data.ok) {
+            alert(data.message);
+            return
+          }
+          const comments = data.discussions;
+          
+          for (let comment of comments) {
+            appendCommentToDom(commentDOM, comment)
+          }  
+          
+          let length = comments.length
+          if (length === 0) {
+            isEnd = true
+            $('.load-more').hide()
+          }else {
+            lastId = comments[length - 1].id
+            $('.comments').append(loadMoreButtonHTML)
+          }
+        }) 
+      }
+    })
+  </script>
+  <style>
+    .card {
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">留言板</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="#">首頁 <span class="sr-only">(current)</span></a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <form class="add-comment-form">
+      <div class="form-group">
+        <label for="form-nickname">暱稱</label>
+        <input name="nickname" class="form-control" id="form-nickname"></input>
+      </div>
+      <div class="form-group">
+        <label for="content-textarea">留言內容</label>
+        <textarea name="content" class="form-control" id="content-textarea"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">送出</button>
+    </form>
+    <div class="comments">
+    </div>
+  </div>
+</body>
+</html>
