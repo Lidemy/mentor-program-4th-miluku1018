@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoList</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <script>
+    function escape(toOutput){
+      return toOutput.replace(/\&/g, '&amp;')
+        .replace(/\</g, '&lt;')
+        .replace(/\>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/\'/g, '&#x27')
+        .replace(/\//g, '&#x2F')
+    }
+    $(document).ready(function() {
+      $('.add-btn').click(function() {
+        var addContent = $('input[name=todo]').val().trim();
+        if (addContent === "") {
+          alert("請輸入代辦事項");
+        } else {
+          $('.list-group').append(`
+          <div class="item input-group">
+            <span class="badge badge-success">未完成</span>
+            <input type="text" class="form-control" value=${escape(addContent)}>
+            <div class="input-group-append">
+              <button class="check-btn btn-info" type="button" id="addon">
+              </button>
+              <button class="delete-btn btn-info" type="button" id="addon">
+              </button>
+            </div>
+          </div>
+        `)
+        }
+        $('input[name=todo]').val('')
+      })
+      $('.remove-all-btn').click(() => {
+        $('.list-group').empty();
+      })
+      $('.btn-selected').click(function() {
+        var attr = $(this).attr("data-btn");
+
+        $(".btn-selected").removeClass("active");
+        $(this).addClass("active");
+
+        $(".item").hide();
+        if (attr === "all") {
+          $(".item").show();
+        } else if (attr === "done") {
+          $(".completed").show();
+        } else if (attr === "undone") {
+          $(".item").show();
+          $(".completed").hide();
+        }
+      })
+      $('.list-group').on('click', '.check-btn', function(e) {
+        const todo = $(e.target).parent('.input-group-append').parent('.input-group')
+        if (todo.hasClass('completed')){
+          $(e.target).parent('.input-group-append').siblings("input").css('color', 'black')
+          todo.removeClass('completed');
+          $(e.target).parent('.input-group-append').siblings(".badge").text('未完成')
+        }else {
+          $(e.target).parent('.input-group-append').siblings("input").css('color', '#808080a8')
+          todo.addClass('completed');
+          $(e.target).parent('.input-group-append').siblings(".badge").text('已完成')
+        }
+      })
+      $('.list-group').on('click', '.delete-btn', function(e) {
+        $(e.target).parent('.input-group-append').parent('.input-group').fadeOut();
+      })
+
+    })
+  </script>
+  <style>
+    .card .card-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    .input-group .badge-success {
+      padding-top: 14px;
+      border-radius: 0px;
+    }
+    .btn.active {
+      color: #ffffff;
+      background-color: #007bff;
+    }
+    .check-btn::before {
+      font-family: "Font Awesome 5 Free"; 
+      content: "\f00c";
+      font-weight: 900;
+    }
+    .delete-btn::before {
+      font-family: "Font Awesome 5 Free"; 
+      content: "\f2ed";
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand mx-auto" href="#">ToDoList</a>
+    </button>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto mt-3">
+        <div class="input-group mb-3">
+          <input name="todo" type="text" class="form-control" id="addon" placeholder="請輸入待辦事項">
+          <div class="input-group-append">
+            <button class="add-btn btn-info" type="submit" id="addon">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="d-block">
+              <h2>列表</h2>
+            </span>
+            <div>
+              <button type="button" class="btn active btn-outline-primary btn-selected" data-btn="all">全部</button>
+              <button type="button" class="btn btn-outline-secondary btn-selected" data-btn="done">已完成</button>
+              <button type="button" class="btn btn-outline-success btn-selected" data-btn="undone">未完成</button>
+              <button type="button" class="remove-all-btn btn btn-outline-danger">清空列表</button>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
