@@ -1,11 +1,11 @@
 export function appendStyle(cssTemplate) {
-  const styleElement = document.createElement('style')
+  const styleElement = document.createElement('style');
   styleElement.type = 'text/css';
   styleElement.appendChild(document.createTextNode(cssTemplate));
-  document.head.appendChild(styleElement)
+  document.head.appendChild(styleElement);
 }
 
-export function escape(toOutput){
+export function escape(toOutput) {
   return toOutput.replace(/\&/g, '&amp;')
     .replace(/\</g, '&lt;')
     .replace(/\>/g, '&gt;')
@@ -21,10 +21,10 @@ export function appendCommentToDom(container, comment, isPrepend) {
       <h5 class="card-title">${comment.id} ${escape(comment.nickname)}</h5>
       <p class="card-text">${escape(comment.content)}</p>
     </div>
-  </div>`
+  </div>`;
   if (isPrepend) {
-    container.prepend(html)
+    container.prepend(html);
   } else {
-    container.append(html)
+    container.append(html);
   }
 }

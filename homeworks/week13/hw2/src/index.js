@@ -1,21 +1,21 @@
-import { getComments, addComments} from './api'
-import { appendCommentToDom, appendStyle } from './utils'
-import { cssTemplate, getLoadMoreButton, getForm  } from './templates'
-import $ from 'jquery'
+import { getComments, addComments } from './api';
+import { appendCommentToDom, appendStyle } from './utils';
+import { cssTemplate, getLoadMoreButton, getForm } from './templates';
+import $ from 'jquery';
 
 // 初始化
-export function init(options){
-  let siteKey = ''
-  let apiUrl = ''
-  let commentDOM = null
-  let containerElement = null
-  let lastId = null
-  let isEnd = false
-  let loadMoreClassName
-  let commentsClassName
-  let commentsSelector
-  let formClassName
-  let formSelector
+export function init(options) {
+  let siteKey = '';
+  let apiUrl = '';
+  let commentDOM = null;
+  let containerElement = null;
+  let lastId = null;
+  let isEnd = false;
+  let loadMoreClassName;
+  let commentsClassName;
+  let commentsSelector;
+  let formClassName;
+  let formSelector;
 
   siteKey = options.siteKey
   apiUrl = options.apiUrl
@@ -25,9 +25,9 @@ export function init(options){
   commentsSelector = '.' + commentsClassName
   formSelector = '.' + formClassName
 
-  containerElement = $(options.containerSelector)
-  containerElement.append(getForm(formClassName, commentsClassName))
-  appendStyle(cssTemplate)
+  containerElement = $(options.containerSelector);
+  containerElement.append(getForm(formClassName, commentsClassName));
+  appendStyle(cssTemplate);
 
 
   commentDOM = $(commentsSelector)
@@ -86,5 +86,3 @@ export function init(options){
     }) 
   }
 }
-
-

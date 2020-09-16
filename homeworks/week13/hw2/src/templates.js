@@ -1,4 +1,4 @@
-export const cssTemplate = ' .card { margin-top: 12px; }'
+export const cssTemplate = ' .card { margin-top: 12px; }';
 
 export function getForm(className, commentsClassName) {
   return `
@@ -16,9 +16,9 @@ export function getForm(className, commentsClassName) {
   </form>
   <div class="${commentsClassName}">
   </div>
-</div>`
+</div>`;
 }
 
 export function getLoadMoreButton(className) {
-  return `<button class="${className} btn btn-outline-primary mt-3">載入更多</button>`
+  return `<button class="${className} btn btn-outline-primary mt-3">載入更多</button>`;
 }
