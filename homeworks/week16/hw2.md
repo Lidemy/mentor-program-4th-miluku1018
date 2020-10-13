@@ -1,9 +1,13 @@
+### Event Loop + Scope
+```
 for(var i=0; i<5; i++) {
   console.log('i: ' + i)
   setTimeout(() => {
     console.log(i)
   }, i * 1000)
 }
+```
+輸出 0 1 2 3 4 5 5 5 5 5
 
 1. 執行迴圈
 2. 第一圈 i = 0，印出 0

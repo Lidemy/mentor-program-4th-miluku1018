@@ -1,5 +1,5 @@
 ### Event Loop
-
+```
 console.log(1)
 setTimeout(() => {
   console.log(2)
@@ -9,6 +9,8 @@ setTimeout(() => {
   console.log(4)
 }, 0)
 console.log(5)
+```
+輸出 1 3 5 2 4
 
 1. 執行 console.log(1) => 印出 1
 2. setTimeout 表示延遲某段時間後，才執行「一次」指定的程式碼，因此，第一個參數是會被加入到佇列中的訊息，先被丟到佇列（Queue）等待，是佇列第一個訊息
