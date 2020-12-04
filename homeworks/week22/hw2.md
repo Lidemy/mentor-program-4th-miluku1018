@@ -30,7 +30,6 @@ useEffect(() => {
   - useEffect 是在 Browser paint 後，useLayoutEffect 是在 Browser paint 前。
   - 使用 useLayoutEffect 就可以直接看到我們想要顯示的畫面，而不會出現初始畫面。
 - useMemo：用一個 function 把想要的值，回傳回來。回傳一個 memoized 的值。傳遞第一個參數 function 及第二個參數 依賴 array。useMemo 只會在依賴改變時才重新計算 memoized 的值。這個最佳化可以避免在每次 render 都進行昂貴的計算。
-  - 要謹記傳到 useMomo 的 function 會在 render 期間執行。不要做一些通常不會在 render 期間做的事情。例如：處理 side effect 屬於 useEffect，而不是 useMemo。
 
 ```jsx
 const memoizeValue = useMemo() => ComputeExpensiveValue(a, b), [a, b])
@@ -54,19 +53,19 @@ const value = useContext(MyContext);
 **常用 method**
 
 - constructor：如果你沒有初始化 state 也不綁定方法的話，你的 React component 就不需要 constructor。一個 React component 的 constructor 會在其被 mount 之前被呼叫。
-- 透過指定一個 this.state 物件來初始化內部 state
-- 為 event handler 方法綁定 instance
-- 不可在 constructor() 中呼叫 setSatate()。如果你的 component 需要使用內部 state，請在 constructor 中將其最初的 state 指定為 this.state
+  - 透過指定一個 this.state 物件來初始化內部 state
+  - 為 event handler 方法綁定 instance
+  - 不可在 constructor() 中呼叫 setSatate()。如果你的 component 需要使用內部 state，請在 constructor 中將其最初的 state 指定為 this.state
 - render：class component 中唯一必要的方法。當 render 被呼叫時，它將會檢視 this.props 和 this.state 中的變化，並回傳以下類別之一：
-- React element。通常是透過 JSX 建立的。例如，<div /> 和 <MyComponent /> 這兩個 React element 會告訴 React 要 render 一個 DOM node 和一個使用者定義的 component。
-- Array 和 fragment。它們會從 render 中回傳數個 element。
-- Portal。它們會讓你將 children render 到不同的 DOM subtree 中。
-- String 和 number。這些 DOM 中將會被 render 為文字 node。
-- Boolean 或 null。什麼都不 render。
+  - React element。通常是透過 JSX 建立的。例如，`<div />` 和 `<MyComponent />` 這兩個 React element 會告訴 React 要 render 一個 DOM node 和一個使用者定義的 component。
+  - Array 和 fragment。它們會從 render 中回傳數個 element。
+  - Portal。它們會讓你將 children render 到不同的 DOM subtree 中。
+  - String 和 number。這些 DOM 中將會被 render 為文字 node。
+  - Boolean 或 null。什麼都不 render。
 - componentDidMount：在一個 component 被 mount （加入 DOM tree 中）後，componentDidMount() 會馬上被呼叫。需要 DOM node 的初始化應該寫在這個方法裡面。
-- 如果你需要從端端終端點（remote endpoint）請求資料的話，此處非常適合進行實例化網路請求（network request）
+  - 如果你需要從端端終端點（remote endpoint）請求資料的話，此處非常適合進行實例化網路請求（network request）
 - componentDidUpdate：會再更新後馬上被呼叫。這個方法並不會在初次 render 時被呼叫。此處也適合做網路請求，如果你有比較目前的 prop 和之前的 prop 的話（如果 prop 沒有改變的話，網路請求可能並非必要）
-- 可以馬上在 componentDidUpdate() 呼叫 setState()，但注意這必須要被包圍在一個類似以下範例的條件語句內，否則你會進入一個無限迴圈。
+  - 可以馬上在 componentDidUpdate() 呼叫 setState()，但注意這必須要被包圍在一個類似以下範例的條件語句內，否則你會進入一個無限迴圈。
 
 ```
 componentDidUpdate(prevProps) {
@@ -93,7 +92,7 @@ componentDidUpdate(prevProps) {
 
 ## 請問 class component 與 function component 的差別是什麼？
 
-- 語法：function compoent 語法更簡單，只需要傳入一個 props 參數，而 props 會一直是原本傳進來的那個，而不會跟著更新，閉包的概念。class component 要求先繼承 React.component ，然後，必須定義 render 方法。每次都可以拿到最新的 this.props，因為 this 隨時都在變化
+- 語法：function compoent 語法更簡單，只需要傳入一個 props 參數，而 props 會一直是原本傳進來的那個，而不會跟著更新，閉包的概念。class component 要求先繼承 React.component ，然後，必須定義 render 方法。每次都可以拿到最新的 this.props，因為 this 隨時都在變化。
 - state 狀態：function component 可以是箭頭函式或者一般函式，無法使用 this.state 和 setState()，也就是無狀態元件，但是，useState 出現後，就可以有 state 了。如果一個元件需要用到狀態的時候，要使用 class component。
 - 生命週期：function component 不具有生命週期，因為所有的生命週期函數都來自 React.Component，但是，useEffect 出現後，就有生命週期了。當一個元件需要生命週期，就使用 class component。
 
